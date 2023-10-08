@@ -1,0 +1,145 @@
+<!-- 
+  
+  | The Link Your Class | <concrete link> |
+ 
+  | ----------------- |--------------- |
+   
+  | The Link of Requirement of This Assignment | <concrete link> |
+   
+  | The Aim of This Assignment | <Write code for a calculator> |
+   
+  | MU STU ID and FZU STU ID | <832102102> |
+   -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+  <style>
+    .container {
+      width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    
+    .calculator {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 10px;
+      margin-bottom: 10px;
+    }
+    
+    input[type="text"] {
+      grid-column: 1 / span 4;
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 5px;
+    }
+    
+    button {
+      padding: 10px;
+      font-size: 16px;
+    }
+    
+    .equals {
+      grid-column: 4 / span 1;
+      background-color: #ff9800;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Super Calculator</h2>
+    <input type="text" id="display" readonly>
+    <div class="calculator">
+      <button onclick="power()">^</button>
+      <button onclick="sqrt()">√</button>
+      <button onclick="log()">lg</button>
+      <button onclick="exp()">exp</button>
+      <button onclick="sin()">sin</button>
+      <button onclick="cos()">cos</button>
+      <button onclick="tan()">tan</button>
+      <button class="equals" onclick="calculate()">=</button>
+      <button onclick="appendToDisplay('7')">7</button>
+      <button onclick="appendToDisplay('8')">8</button>
+      <button onclick="appendToDisplay('9')">9</button>
+      <button onclick="appendToDisplay('/')">/</button>
+      <button onclick="appendToDisplay('4')">4</button>
+      <button onclick="appendToDisplay('5')">5</button>
+      <button onclick="appendToDisplay('6')">6</button>
+      <button onclick="appendToDisplay('*')">*</button>
+      <button onclick="appendToDisplay('1')">1</button>
+      <button onclick="appendToDisplay('2')">2</button>
+      <button onclick="appendToDisplay('3')">3</button>
+      <button onclick="appendToDisplay('-')">-</button>
+      <button onclick="appendToDisplay('.')">.</button>
+      <button onclick="appendToDisplay('0')">0</button>
+      <button onclick="clearDisplay()">AC</button>
+      <button onclick="appendToDisplay('+')">+</button>
+
+
+    </div>
+  </div>
+
+  <script>
+    function appendToDisplay(value) {
+      document.getElementById("display").value += value;
+    }
+
+    function clearDisplay() {
+      document.getElementById("display").value = "";
+    }
+
+    function calculate() {
+      var expression = document.getElementById("display").value;
+      var result = eval(expression);
+      document.getElementById("display").value = expression + "=" + result;
+    }
+
+    function power() {
+      var base = parseFloat(document.getElementById("display").value);
+      var exponent = prompt("Enter the exponent:");
+      var result = Math.pow(base, exponent);
+      document.getElementById("display").value = base + "^" + exponent + "=" + result;
+    }
+
+    function sqrt() {
+      var value = parseFloat(document.getElementById("display").value);
+      var result = Math.sqrt(value);
+      document.getElementById("display").value = "√" + value + "=" + result;
+    }
+
+    function log() {
+      var value = parseFloat(document.getElementById("display").value);
+      var result = Math.log10(value);
+      document.getElementById("display").value = "log(" + value + ")=" + result;
+    }
+
+    function exp() {
+      var value = parseFloat(document.getElementById("display").value);
+      var result = Math.exp(value);
+      document.getElementById("display").value = "exp(" + value + ")=" + result;
+    }
+
+    function sin() {
+      var value = parseFloat(document.getElementById("display").value);
+      var result = Math.sin(value);
+      document.getElementById("display").value = "sin(" + value + ")=" + result;
+    }
+
+    function cos() {
+      var value = parseFloat(document.getElementById("display").value);
+      var result = Math.cos(value);
+      document.getElementById("display").value = "cos(" + value + ")=" + result;
+    }
+
+    function tan() {
+      var value = parseFloat(document.getElementById("display").value);
+      var result = Math.tan(value);
+      document.getElementById("display").value = "tan(" + value + ")=" + result;
+    }
+</script>
+</body>
+</html>
